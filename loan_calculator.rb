@@ -22,12 +22,12 @@ def invalid_number?(number)
 end
 
 def monthly_interest_rate(interest_rate)
-    number = (interest_rate.to_f / 100) / 12
-    number.round(4)
+  number = (interest_rate.to_f / 100) / 12
+  number.round(4)
 end
 
 def loan_duration_in_months(duration)
-  duration = duration.to_i * 12
+  duration.to_i * 12
 end
 
 prompt(MESSAGES['welcome'])
@@ -67,7 +67,7 @@ loop do # main loop
     end
   end
 
-  loan_duration  = ''
+  loan_duration = ''
   loop do
     prompt(MESSAGES['valid_loan_duration'])
     loan_duration = gets.chomp
@@ -79,9 +79,13 @@ loop do # main loop
     end
   end
 
-  monthly_payment = loan_amount.to_i * (monthly_interest_rate(annual_percentage_rate) / (1 - (1 + monthly_interest_rate(annual_percentage_rate))**(-loan_duration_in_months(loan_duration))))
+  interest_rate = monthly_interest_rate(annual_percentage_rate)
+  months = loan_duration_in_months(loan_duration)
 
-  puts "For a #{loan_amount} mortgage at #{annual_percentage_rate}.00%, #{loan_duration} years amortization, your monthly payment will be : #{monthly_payment.to_f.round(2)}"
+  monthly_payment = loan_amount.to_i *
+                    interest_rate / (1 - (1 + interest_rate)**-months)
+
+  puts "Your monthly payment will be : #{monthly_payment.to_f.round(2)}"
 
   puts "Would you like another mortgage calculation? (Y)"
   answer = gets.chomp
