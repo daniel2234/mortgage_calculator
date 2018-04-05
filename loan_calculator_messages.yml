@@ -1,0 +1,7 @@
+welcome: " Welcome to Mortgage Car Calculator! Enter your name:"
+valid_name: " Make sure to enter a valid name."
+valid_loan: " Enter the loan amount:"
+invalid_number: "Does not seem to be a number."
+loan_description: " We will need three pieces of information in order to proceed with true mortgage calculation."
+valid_interest_rate: "Enter the Annual Percentage Rate:"
+valid_loan_duration: "Enter the Loan Duration in Years:"
